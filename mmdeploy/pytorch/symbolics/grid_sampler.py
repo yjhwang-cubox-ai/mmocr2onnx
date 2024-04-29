@@ -49,15 +49,15 @@ def grid_sampler_ppl(g,
         align_corners_i=align_corners)
 
 
-@SYMBOLIC_REWRITER.register_symbolic('grid_sampler', is_pytorch=True)
-def grid_sampler__default(*args):
-    """Register default symbolic function for `grid_sampler`.
+# @SYMBOLIC_REWRITER.register_symbolic('grid_sampler', is_pytorch=True)
+# def grid_sampler__default(*args):
+#     """Register default symbolic function for `grid_sampler`.
 
-    Add support to grid_sample to ONNX.
-    """
-    ctx = SYMBOLIC_REWRITER.get_context()
-    backend = get_backend(ctx.cfg)
-    if backend == Backend.PPLNN:
-        return grid_sampler_ppl(*args)
-    else:
-        return grid_sampler(*args)
+#     Add support to grid_sample to ONNX.
+#     """
+#     ctx = SYMBOLIC_REWRITER.get_context()
+#     backend = get_backend(ctx.cfg)
+#     if backend == Backend.PPLNN:
+#         return grid_sampler_ppl(*args)
+#     else:
+#         return grid_sampler(*args)
